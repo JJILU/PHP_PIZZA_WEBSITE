@@ -1,12 +1,13 @@
 <?php
-    
+    //  required & included statements
     include('config/db_connect.php');
+    require_once('config/base_url.php');  
 
     if (isset($_POST['delete'])) {
       // escape mysql injection
       $id_to_delete = mysqli_real_escape_string($coon,$_POST['id_to_delete']);
 
-      // make sql 
+      // make sql query 
       $sql = "DELETE FROM pizzas WHERE id = $id_to_delete";
 
       // get query result
@@ -60,23 +61,29 @@
 <html lang="en">
 <?php  include('./templates/header.php'); ?>
 
-<div class="container center">
+<div class="container center grey-text">
   <?php if($pizza): ?>
     <h4><?php htmlspecialchars($pizza['title']); ?></h4>
     <p>created by: <?php echo htmlspecialchars($pizza['email']); ?></p>
     <p>created by: <?php echo htmlspecialchars(date($pizza['created_at'])); ?></p>
     <h5>Ingredients:</h5>
     <p><?php echo  htmlspecialchars($pizza['ingredients']); ?></p>
-      <form action="pizza_details.php" method="POST">
+    <div class="container center">
+    <form class="center" action="pizza_details.php" method="POST">
         <input type="hidden" name="id_to_delete" value="<?php echo $pizza['id']; ?>">
         <input type="submit" class="btn brand z-depth-0" name="delete" value="Delete">
       </form>
+      <form class="center" action="admin_update_pizza.php" method="POST">
+        <a href="<?php echo BASE_URL . 'admin_update_pizza.php?id=' . $pizza['id']; ?>" class="btn brand">UPDATE</a>
+      </form>
+    </div>
+      
   <?php else: ?>
      <h5>No such pizza exists!</h5>
   <?php endif; ?>
-
-
 </div>
 
 <?php  include('./templates/footer.php'); ?>
 </html>
+
+<!-- http://localhost/PHP_NETNINJA_2025/pizza_website/ -->

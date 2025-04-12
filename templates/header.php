@@ -13,6 +13,13 @@
     .brand-text {
       color: #cbb09c !important;
     }
+    .pizza {
+      max-width: 460px;
+      margin: 40px auto  30px;
+      display: block;
+      position: relative;
+      top: -30px;
+    }
 
     form {
       max-width: 460px;

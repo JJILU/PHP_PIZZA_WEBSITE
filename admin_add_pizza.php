@@ -8,7 +8,7 @@
     //   echo $_GET['ingrediants']. '<br/>';
     // }
 
-    print_r($_POST);
+    // print_r($_POST);
 
     $errors = array(
       'email_error' => "",
@@ -107,16 +107,7 @@
 
       header('Location: index.php');
     }
-    
-
-
-
-    }
-
-
-
-    
-
+    }  // End Of POST Check
     
    
 ?>
@@ -151,4 +142,4 @@
    </form>
 </section>
 
-
+<?php  include('templates/footer.php');?>
